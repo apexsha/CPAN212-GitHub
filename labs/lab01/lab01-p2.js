@@ -13,16 +13,16 @@ else if (req.url === "./about") {
     res.end(webpage)
 }
 else if (req.url === "./contact") {
-    let webpage = fs.readFileSync("about.html")
+    let webpage = fs.readFileSync("contact.html")
     res.end("Welcome to Contact")
 }
 
 else if (req.url === "./login") {
-    let webpage = fs.readFileSync("about.html")
+    let webpage = fs.readFileSync("login.html")
     res.end("Welcome to Login")
 }
 else if (req.url === "./register") {
-    let webpage = fs.readFileSync("about.html")
+    let webpage = fs.readFileSync("register.html")
     res.end("Welcome to Register")
 }
     else {
