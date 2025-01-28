@@ -50,6 +50,10 @@ router.get("/calculate/:a/:b/:operation", (req, res) => {
 
         case "/": //-> %2f
             result = a / b;
+            if (b == 0) {
+                res.send("Cannot divide by 0")
+                break;
+            }
             break;
 
         default:
