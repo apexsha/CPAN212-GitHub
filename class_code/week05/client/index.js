@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 8000;
 
 //middleware
 app.use(cors());
-app.use(express.urlencoded({extended: true})); // for html forms
+app.use(express.urlencoded({ extended: true })); // for html forms
 app.use(express.json()); //extracts application/json data, old method was bodypaser
 // app.use(logger); // this is application wide, so it runs everywhere
 
@@ -31,25 +31,24 @@ app.get("/", (req, res) => {
 // data
 app.get("/data", (req, res) => {
 
-    const data = {
-      fname: "Apeksha",
-      lname: "Hiregoudar"
-    }
-    res.send(data);
-  });
+  const data = {
+    fname: "Apeksha",
+    lname: "Hiregoudar"
+  }
+  res.send(data);
+});
 
-  app.post("/login", (req, res)=>{
-    console.log(req.body);
-    //process with DB in future
-    res.send("I stole ur data")
-  })
+app.post("/login", (req, res) => {
+  console.log(req.body);
+  //process with DB in future
+  res.send("I stole ur data")
+})
 
 
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
 });
- 
+
 app.use("", (req, res) => {
   res.status(404).send("Page not found");
 });
- 

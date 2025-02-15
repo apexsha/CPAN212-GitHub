@@ -5,11 +5,11 @@ dotenv.config()
 const app = express();
 const PORT = process.env.PORT || 8000;
 
-app.get("/", (req, res)=> {
+app.get("/", (req, res) => {
     res.send("Welcome to the server - GET")
 })
 
-app.get("/item/:itemID", (req, res)=> {
+app.get("/item/:itemID", (req, res) => {
     console.log(req.url)
     console.log(req.headers)
     console.log(req.query)
@@ -18,17 +18,17 @@ app.get("/item/:itemID", (req, res)=> {
     res.send("You came to the /item route")
 })
 
-app.post("/", (req, res)=> {
+app.post("/", (req, res) => {
     res.send("Welcome to the server - POST")
 })
-app.put("/", (req, res)=> {
+app.put("/", (req, res) => {
     res.send("Welcome to the server - PUT")
 })
-app.delete("/", (req, res)=> {
+app.delete("/", (req, res) => {
     res.send("Welcome to the server - DELETE")
 })
 
 
-app.listen(PORT, ()=>{
+app.listen(PORT, () => {
     console.log(`http://localhost:${PORT}`);
 });
