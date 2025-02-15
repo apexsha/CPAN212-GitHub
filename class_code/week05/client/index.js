@@ -10,34 +10,40 @@
 // [Please enable only ONE of these] 
 import express from "express"; // if you are using type: module
 //const express = require("express"); // if using common JS (Default)
-import logger from "./middleware/logger.js";
-import auth from "./middleware/auth.js";
+import logger from "../../week04/middleware/logger.js";
+import auth from "../../week04/middleware/auth.js";
+import cors from "cors";
 
 const app = express();
 const PORT = process.env.PORT || 8000;
 
+//middleware
+app.use(cors());
+app.use(express.urlencoded({extended: true})); // for html forms
+app.use(express.json()); //extracts application/json data, old method was bodypaser
 // app.use(logger); // this is application wide, so it runs everywhere
 
 // routes
-app.get("/", logger, (req, res) => {
+app.get("/", (req, res) => {
   res.send("Welcome to our server");
 });
 
-app.get("/about", (req, res) => {
-    res.send("Welcome to the about page");
+// data
+app.get("/data", (req, res) => {
+
+    const data = {
+      fname: "Apeksha",
+      lname: "Hiregoudar"
+    }
+    res.send(data);
   });
 
-app.get("/login", (req, res) => {
-    res.send("We have recieved your request - Login");
-  });
+  app.post("/login", (req, res)=>{
+    console.log(req.body);
+    //process with DB in future
+    res.send("I stole ur data")
+  })
 
-app.post("/login", (req, res) => {
-    res.send("We stole your information");
-  });
-
-  app.get("/fetchData", auth, (req, res) => {
-    res.send("Hi Apeksha, here is your profile data");
-  });
 
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
