@@ -40,6 +40,7 @@ app.get("/data", (req, res) => {
 
 app.post("/login", (req, res) => {
   console.log(req.body);
+  
   //process with DB in future
   res.send("I stole ur data")
 })
